@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+            <img src="../../assets/logo.png" style="width: 150px;height: 150px;">
+            <ul class="nav nav-pills nav-stacked">
+                <li [routerLink]="['/']"><a>Home</a></li>
+                <li><a [routerLink]="['/sessions']">Reports</a></li>
+                <li><a href="#">Ml Portal Images</a></li>
+                <li class="active"><a href="#">Nearby</a></li>
+            </ul><br>
+        </div>
+        <br>
+
+        <div id="map" class="col-sm-9" style="height: 100vh;"></div>
+    </div>
+</div>
