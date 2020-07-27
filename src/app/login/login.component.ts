@@ -8,7 +8,7 @@ import { Router } from "@angular/router"
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  isRegisterForm: boolean = false;
   isOtpValid: boolean = false;
   otp: any;
   user: any;
@@ -59,5 +59,13 @@ export class LoginComponent implements OnInit {
       alert("Invalid OTP");
     }
 
+  }
+
+  changeToSignInForm() {
+    this.isRegisterForm = false;
+  }
+
+  changeToRegisterForm() {
+    this.isRegisterForm = true;
   }
 }

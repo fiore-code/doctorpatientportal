@@ -61,3 +61,7 @@
       margin-top: 0;
     }
   }
+
+  #sideNav{
+    background-image: linear-gradient(to bottom , red , blue);
+  }

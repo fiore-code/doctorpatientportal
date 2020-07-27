@@ -3,7 +3,7 @@ applications:
 - name: Covid19Tracker
   buildpacks: 
    - https://github.com/cloudfoundry/staticfile-buildpack
-  path: dist/  
+  path: dist/
   memory : 256M
   command: "$HOME/boot.sh"
   routes:
