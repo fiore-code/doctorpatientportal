@@ -11,34 +11,34 @@ export class PatientService {
   }
 
   getPdfUrl(emailId): Observable<Object> {
-    return this.http.post('http://ec2-13-235-31-214.ap-south-1.compute.amazonaws.com/getuserreport', { emailid: emailId });
+    return this.http.post('https://acroinfer.in/getuserreport', { emailid: emailId });
   }
 
   updateUserProfile(obj: Object): Observable<Object> {
-    return this.http.post('http://ec2-13-235-31-214.ap-south-1.compute.amazonaws.com/updateuser', obj);
+    return this.http.post('https://acroinfer.in/updateuser', obj);
   }
 
   getSpecificData(user: string) {
-    return this.http.post('http://ec2-13-235-31-214.ap-south-1.compute.amazonaws.com/getuserdetailsspec', { emailid: user });
+    return this.http.post('https://acroinfer.in/getuserdetailsspec', { emailid: user });
   }
 
   sendRegisterUser(userObj) {
-    return this.http.post('http://ec2-13-235-31-214.ap-south-1.compute.amazonaws.com/registeruser', userObj);
+    return this.http.post('https://acroinfer.in/registeruser', userObj);
   }
 
   getotpForLogin(userObj) {
-    return this.http.post('http://ec2-13-235-31-214.ap-south-1.compute.amazonaws.com/userlogin', userObj);
+    return this.http.post('https://acroinfer.in/userlogin', userObj);
   }
 
   getUserFullDetails(emailid) {
-    return this.http.post('http://ec2-13-235-31-214.ap-south-1.compute.amazonaws.com/getuser', { emailid });
+    return this.http.post('https://acroinfer.in/getuser', { emailid });
   }
 
   getDoctorList() {
-    return this.http.get("http://ec2-13-235-31-214.ap-south-1.compute.amazonaws.com/getDoctors");
+    return this.http.get("https://acroinfer.in/getDoctors");
   }
   
   sendEmailToDoctor(doctorObj): Observable<Object>{
-    return this.http.post("http://ec2-13-235-31-214.ap-south-1.compute.amazonaws.com/getReportByEmail",doctorObj);
+    return this.http.post("https://acroinfer.in/getReportByEmail",doctorObj);
   }
 }
