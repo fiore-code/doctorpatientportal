@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { NearbyComponent } from './nearby/nearby.component';
 import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorreportComponent } from './doctorreport/doctorreport.component';
+import { MlportalComponent } from './mlportal/mlportal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DoctorreportComponent } from './doctorreport/doctorreport.component';
     SessionListComponent,
     NearbyComponent,
     DoctorhomeComponent,
-    DoctorreportComponent
+    DoctorreportComponent,
+    MlportalComponent
   ],
   imports: [
     BrowserModule,
