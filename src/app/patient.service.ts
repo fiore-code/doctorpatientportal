@@ -37,8 +37,12 @@ export class PatientService {
   getDoctorList() {
     return this.http.get("https://acroinfer.in/getDoctors");
   }
-  
-  sendEmailToDoctor(doctorObj): Observable<Object>{
-    return this.http.post("https://acroinfer.in/getReportByEmail",doctorObj);
+
+  sendEmailToDoctor(doctorObj): Observable<Object> {
+    return this.http.post("https://acroinfer.in/getReportByEmail", doctorObj);
+  }
+
+  getMlImages(userObj): Observable<Object> {
+    return this.http.post("https://acroinfer.in/getUserImages", userObj);
   }
 }

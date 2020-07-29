@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PatientService } from '../patient.service';
 import { Router } from "@angular/router"
 
@@ -10,7 +10,8 @@ import { Router } from "@angular/router"
 export class SessionListComponent implements OnInit {
   PdfUrlList: Object[] = [];
   user: any;
-  newDoctorList: Object[] = []
+  newDoctorList: Object[] = [];
+  anotherDoctorList:Object[]=[];
   shareToDoctor: boolean = false;
   file_path: any;
   constructor(private patientservice: PatientService, private router: Router) { }
@@ -30,6 +31,13 @@ export class SessionListComponent implements OnInit {
       });
     });
 
+    this.getDoctorList();
+  }
+
+  backToDoctor() {
+    this.shareToDoctor = false;
+    this.newDoctorList = [];
+    this.file_path = "";
   }
 
   onDoctorShare(event, filePath) {
@@ -56,12 +64,30 @@ export class SessionListComponent implements OnInit {
       if (data["status"] == false) {
         alert("Server Error Occurred");
         this.shareToDoctor = false;
+        this.newDoctorList = [];
       }
       else {
         alert("Email Sent To Doctor");
         this.shareToDoctor = false;
+        this.newDoctorList = [];
       }
     });
   }
+
+
+  logOff() {
+    sessionStorage.removeItem("user")
+    sessionStorage.removeItem("sessionId");
+    this.router.navigate(['/login']);
+  }
+
+  getDoctorList() {
+    this.patientservice.getDoctorList().subscribe(data => {
+      data["object"].forEach(element => {
+        this.anotherDoctorList.push(element);
+      });
+    });
+  }
+
 
 }

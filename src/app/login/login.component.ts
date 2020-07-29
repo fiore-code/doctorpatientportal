@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const session = sessionStorage.getItem("sessionId");
     if (session != null) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/SessionList']);
     }
   }
   onSubmitRegister(value) {

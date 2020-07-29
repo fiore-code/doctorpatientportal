@@ -18,6 +18,7 @@ export class UserPdfComponent implements OnInit {
   blood_pressure: any;
   blood_group: any;
   blood_sugar: any;
+  newDoctorList: Object[] = [];
 
   constructor(private patientservice: PatientService, private router: Router) { }
 
@@ -30,6 +31,7 @@ export class UserPdfComponent implements OnInit {
     const inputEmailId = document.getElementById("emailid") as HTMLInputElement;
     inputEmailId.readOnly = true;
 
+    this.getDoctorList();
     this.patientservice.getSpecificData(this.user).subscribe(data => {
       let userData = data;
       console.log(userData);
@@ -79,6 +81,20 @@ export class UserPdfComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  logOff() {
+    sessionStorage.removeItem("user")
+    sessionStorage.removeItem("sessionId");
+    this.router.navigate(['/login']);
+  }
+
+  getDoctorList() {
+    this.patientservice.getDoctorList().subscribe(data => {
+      data["object"].forEach(element => {
+        this.newDoctorList.push(element);
+      });
+    });
   }
 
 }

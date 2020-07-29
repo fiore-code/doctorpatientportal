@@ -1,5 +1,6 @@
 import { Component, OnInit, Directive, Input, ViewChild } from '@angular/core';
 import { } from 'googlemaps';
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-nearby',
@@ -10,7 +11,7 @@ export class NearbyComponent implements OnInit {
   @ViewChild('map') mapElement: any;
   map: google.maps.Map;
   center = new google.maps.LatLng(22.4973, 88.3714);
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
 
@@ -42,6 +43,12 @@ export class NearbyComponent implements OnInit {
         position: placeLoc
       });
     }
+  }
+
+  logOff() {
+    sessionStorage.removeItem("user")
+    sessionStorage.removeItem("sessionId");
+    this.router.navigate(['/login']);
   }
 
 }
