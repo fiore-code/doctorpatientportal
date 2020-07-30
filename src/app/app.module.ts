@@ -13,6 +13,7 @@ import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorreportComponent } from './doctorreport/doctorreport.component';
 import { MlportalComponent } from './mlportal/mlportal.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     NearbyComponent,
     DoctorhomeComponent,
     DoctorreportComponent,
-    MlportalComponent
+    MlportalComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

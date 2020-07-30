@@ -9,11 +9,12 @@ import { NearbyComponent } from './nearby/nearby.component';
 import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorreportComponent } from './doctorreport/doctorreport.component';
 import { MlportalComponent } from './mlportal/mlportal.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [{
   path: "",
-  redirectTo: 'SessionList',
+  redirectTo: 'dashboard',
   pathMatch: "full"
 },
 { path: 'login', component: LoginComponent },
@@ -22,7 +23,8 @@ const routes: Routes = [{
 { path: 'nearby', component: NearbyComponent },
 { path: 'doctorhome', component: DoctorhomeComponent },
 { path: 'userreport', component: DoctorreportComponent },
-{ path: 'mlportal', component: MlportalComponent }
+{ path: 'mlportal', component: MlportalComponent },
+{ path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({

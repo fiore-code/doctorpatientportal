@@ -56,4 +56,8 @@ export class PatientService {
   getMlImages(userObj): Observable<Object> {
     return this.http.post("https://acroinfer.in/getUserImages", userObj);
   }
+
+  getSentimentValues(userObj) {
+    return this.http.post("https://acroinfer.in/calculateSentiment", userObj);
+  }
 }
