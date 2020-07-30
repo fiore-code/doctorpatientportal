@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../patient.service';
-import { Session } from 'protractor';
 import { Router } from "@angular/router"
 
 @Component({
@@ -19,6 +18,7 @@ export class DoctorhomeComponent implements OnInit {
   blood_pressure: any;
   blood_group: any;
   blood_sugar: any;
+  newDoctorList: Object[] = [];
   constructor(private patientservice: PatientService, private router: Router) { }
 
   ngOnInit(): void {
@@ -30,7 +30,8 @@ export class DoctorhomeComponent implements OnInit {
     const inputEmailId = document.getElementById("emailid") as HTMLInputElement;
     inputEmailId.readOnly = true;
 
-    this.patientservice.getSpecificData(this.user).subscribe(data => {
+    this.getDoctorList();
+    this.patientservice.getDoctorSpecificData(this.user).subscribe(data => {
       let userData = data;
       console.log(userData);
       this.age = userData["Objects"]["0"]["age"];
@@ -79,6 +80,20 @@ export class DoctorhomeComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  logOff() {
+    sessionStorage.removeItem("user")
+    sessionStorage.removeItem("sessionId");
+    this.router.navigate(['/login']);
+  }
+
+  getDoctorList() {
+    this.patientservice.getDoctorList().subscribe(data => {
+      data["object"].forEach(element => {
+        this.newDoctorList.push(element);
+      });
+    });
   }
 
 }

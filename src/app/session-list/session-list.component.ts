@@ -11,9 +11,10 @@ export class SessionListComponent implements OnInit {
   PdfUrlList: Object[] = [];
   user: any;
   newDoctorList: Object[] = [];
-  anotherDoctorList:Object[]=[];
+  anotherDoctorList: Object[] = [];
   shareToDoctor: boolean = false;
   file_path: any;
+  path: any;
   constructor(private patientservice: PatientService, private router: Router) { }
 
   ngOnInit(): void {
@@ -40,7 +41,8 @@ export class SessionListComponent implements OnInit {
     this.file_path = "";
   }
 
-  onDoctorShare(event, filePath) {
+  onDoctorShare(event, filePath,path) {
+    this.path=path;
     this.file_path = filePath;
     console.log(this.file_path);
     this.patientservice.getDoctorList().subscribe(data => {
@@ -71,6 +73,16 @@ export class SessionListComponent implements OnInit {
         this.shareToDoctor = false;
         this.newDoctorList = [];
       }
+    });
+    const newDoctorObj = {
+      emailid: this.user,
+      doctorEmailId: email,
+      file_path: this.file_path,
+      path: this.path
+    };
+
+    this.patientservice.updateDoctorUserOfPatient(newDoctorObj).subscribe(data => {
+      console.log(data);
     });
   }
 

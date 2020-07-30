@@ -50,7 +50,7 @@
                             [href]="element.ReportPDF">{{element.file_name}}</a><span
                             style="margin-left: 100px;">{{element.timestamp}}</span><span style="float: right;"><button
                                 style="border: none;background-color: transparent;"
-                                (click)="onDoctorShare($event,element.file_path)"><i
+                                (click)="onDoctorShare($event,element.file_path,element.ReportPDF)"><i
                                     class="fa fa-share-alt"></i></button></span></li>
                 </div>
                 <ng-template #doctorList>

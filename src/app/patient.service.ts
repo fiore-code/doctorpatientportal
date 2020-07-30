@@ -22,6 +22,17 @@ export class PatientService {
     return this.http.post('https://acroinfer.in/getuserdetailsspec', { emailid: user });
   }
 
+  updateDoctorUserOfPatient(doctorObj) {
+    return this.http.post('https://acroinfer.in/updateDoctorUser', doctorObj);
+  }
+
+  getPatientReportListForDoctor(userObj) {
+    return this.http.post("https://acroinfer.in/getUserForDoctor", userObj);
+  }
+  getDoctorSpecificData(user: String) {
+    return this.http.post('https://acroinfer.in/getdoctordetailsspec', { emailid: user });
+  }
+
   sendRegisterUser(userObj) {
     return this.http.post('https://acroinfer.in/registeruser', userObj);
   }

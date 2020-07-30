@@ -51,9 +51,16 @@ export class LoginComponent implements OnInit {
   onSubmitOtpValidate(value) {
     console.log(value);
     if (value.otp == this.otp) {
-      this.router.navigate(['/']);
-      sessionStorage.setItem("user", this.user);
-      sessionStorage.setItem("sessionId", Math.random().toString());
+      if (this.profileType == "Doctor") {
+        this.router.navigate(['/doctorhome']);
+        sessionStorage.setItem("user", this.user);
+        sessionStorage.setItem("sessionId", Math.random().toString());
+      }
+      else if (this.profileType == "Patient") {
+        this.router.navigate(['/SessionList']);
+        sessionStorage.setItem("user", this.user);
+        sessionStorage.setItem("sessionId", Math.random().toString());
+      }
     }
     else {
       alert("Invalid OTP");
