@@ -14,6 +14,7 @@ import { DoctorreportComponent } from './doctorreport/doctorreport.component';
 import { MlportalComponent } from './mlportal/mlportal.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FileUploadsComponent } from './file-uploads/file-uploads.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     DoctorhomeComponent,
     DoctorreportComponent,
     MlportalComponent,
-    DashboardComponent
+    DashboardComponent,
+    FileUploadsComponent
   ],
   imports: [
     BrowserModule,

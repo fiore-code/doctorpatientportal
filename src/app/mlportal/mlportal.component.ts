@@ -40,13 +40,10 @@ export class MlportalComponent implements OnInit {
 
   onDoctorShare(event, filePath) {
     this.file_path = filePath;
-    console.log(this.file_path);
     this.patientService.getDoctorList().subscribe(data => {
       let doctorJson = data;
-      console.log(doctorJson);
       doctorJson["object"].forEach(element => {
         this.newDoctorList.push(element);
-        console.log(element);
       });
       this.shareToDoctor = true;
     });
@@ -58,7 +55,6 @@ export class MlportalComponent implements OnInit {
       path: this.file_path
     };
     this.patientService.sendEmailToDoctor(doctorObj).subscribe(data => {
-      console.log(data);
       if (data["status"] == false) {
         alert("Server Error Occurred");
         this.shareToDoctor = false;

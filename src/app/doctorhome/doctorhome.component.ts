@@ -33,7 +33,6 @@ export class DoctorhomeComponent implements OnInit {
     this.getDoctorList();
     this.patientservice.getDoctorSpecificData(this.user).subscribe(data => {
       let userData = data;
-      console.log(userData);
       this.age = userData["Objects"]["0"]["age"];
       this.gender = userData["Objects"]["0"]["gender"];
       this.gender = this.gender.toLowerCase();
@@ -45,7 +44,6 @@ export class DoctorhomeComponent implements OnInit {
       if (userData["Objects"]["0"]["user_profile_completed"] == true) {
         this.patientservice.getUserFullDetails(this.user).subscribe(data1 => {
           let fullUserData = data1;
-          console.log(fullUserData);
           this.address = fullUserData["Objects"][0]["address"];
           this.blood_group = fullUserData["Objects"][0]["blood_group"];
           this.blood_pressure = fullUserData["Objects"][0]["blood_pressure"];
@@ -59,13 +57,11 @@ export class DoctorhomeComponent implements OnInit {
   }
 
   onSubmit(value: any) {
-    //console.log(value);
     if (this.checkIfAnyValueNull(value)) {
       alert("please fill all the form");
     }
     else {
       value.user_profile_completed = true;
-      console.log(value);
       this.patientservice.updateUserProfile(value).subscribe(data => {
         alert("User Data Updated");
       });
@@ -75,7 +71,6 @@ export class DoctorhomeComponent implements OnInit {
   checkIfAnyValueNull(obj: Object): boolean {
     for (let key in obj) {
       if (obj[key] == "") {
-        //console.log(key);
         return true;
       }
     }

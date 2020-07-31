@@ -41,6 +41,10 @@ export class PatientService {
     return this.http.post('https://acroinfer.in/userlogin', userObj);
   }
 
+  getUserUploadedFiles(userObj) {
+    return this.http.post('https://acroinfer.in/getUserFile', userObj);
+  }
+
   getUserFullDetails(emailid) {
     return this.http.post('https://acroinfer.in/getuser', { emailid });
   }
@@ -59,5 +63,15 @@ export class PatientService {
 
   getSentimentValues(userObj) {
     return this.http.post("https://acroinfer.in/calculateSentiment", userObj);
+  }
+
+  getImageUrl(file): Observable<Object> {
+    const uploadData = new FormData();
+    uploadData.append("StorageImage", file);
+    return this.http.post('https://file.acroinfer.in/feed/upload', uploadData);
+  }
+
+  sendImageData(userObj) {
+    return this.http.post('https://acroinfer.in/storeUserFile', userObj);
   }
 }

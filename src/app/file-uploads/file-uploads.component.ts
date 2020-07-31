@@ -3,11 +3,11 @@ import { PatientService } from '../patient.service';
 import { Router } from "@angular/router"
 
 @Component({
-  selector: 'app-session-list',
-  templateUrl: './session-list.component.html',
-  styleUrls: ['./session-list.component.css']
+  selector: 'app-file-uploads',
+  templateUrl: './file-uploads.component.html',
+  styleUrls: ['./file-uploads.component.css']
 })
-export class SessionListComponent implements OnInit {
+export class FileUploadsComponent implements OnInit {
   PdfUrlList: Object[] = [];
   user: any;
   newDoctorList: Object[] = [];
@@ -23,60 +23,15 @@ export class SessionListComponent implements OnInit {
       this.router.navigate(['/login']);
     }
     this.user = sessionStorage.getItem("user");
-    this.patientservice.getPdfUrl(this.user).subscribe(data => {
-      let pdfObjectData = data;
-      pdfObjectData["Objects"].forEach(element => {
+    const userObj = {
+      emailid: this.user
+    };
+    this.patientservice.getUserUploadedFiles(userObj).subscribe(data => {
+      data["object"].forEach(element => {
         this.PdfUrlList.push(element);
       });
     });
-
     this.getDoctorList();
-  }
-
-  backToDoctor() {
-    this.shareToDoctor = false;
-    this.newDoctorList = [];
-    this.file_path = "";
-  }
-
-  onDoctorShare(event, filePath,path) {
-    this.path=path;
-    this.file_path = filePath;
-    this.patientservice.getDoctorList().subscribe(data => {
-      let doctorJson = data;
-      doctorJson["object"].forEach(element => {
-        this.newDoctorList.push(element);
-      });
-      this.shareToDoctor = true;
-    });
-  }
-
-  shareToDoctorByEmail(event, email) {
-    const doctorObj = {
-      emailid: email,
-      path: this.file_path
-    };
-    this.patientservice.sendEmailToDoctor(doctorObj).subscribe(data => {
-      if (data["status"] == false) {
-        alert("Server Error Occurred");
-        this.shareToDoctor = false;
-        this.newDoctorList = [];
-      }
-      else {
-        alert("Email Sent To Doctor");
-        this.shareToDoctor = false;
-        this.newDoctorList = [];
-      }
-    });
-    const newDoctorObj = {
-      emailid: this.user,
-      doctorEmailId: email,
-      file_path: this.file_path,
-      path: this.path
-    };
-
-    this.patientservice.updateDoctorUserOfPatient(newDoctorObj).subscribe(data => {
-    });
   }
 
 
@@ -115,6 +70,4 @@ export class SessionListComponent implements OnInit {
     });
 
   }
-
-
 }

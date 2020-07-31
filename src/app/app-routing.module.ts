@@ -10,6 +10,7 @@ import { DoctorhomeComponent } from './doctorhome/doctorhome.component';
 import { DoctorreportComponent } from './doctorreport/doctorreport.component';
 import { MlportalComponent } from './mlportal/mlportal.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FileUploadsComponent } from './file-uploads/file-uploads.component';
 
 
 const routes: Routes = [{
@@ -24,7 +25,8 @@ const routes: Routes = [{
 { path: 'doctorhome', component: DoctorhomeComponent },
 { path: 'userreport', component: DoctorreportComponent },
 { path: 'mlportal', component: MlportalComponent },
-{ path: 'dashboard', component: DashboardComponent }
+{ path: 'dashboard', component: DashboardComponent },
+{ path: 'files', component: FileUploadsComponent }
 ];
 
 @NgModule({

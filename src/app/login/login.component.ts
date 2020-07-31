@@ -22,21 +22,17 @@ export class LoginComponent implements OnInit {
     }
   }
   onSubmitRegister(value) {
-    //console.log(value);
     this.patientService.sendRegisterUser(value).subscribe(data => {
       alert("User Registered!! You may login now");
     });
   }
 
   onSubmitSignin(value) {
-    console.log(value);
     this.user = value["emailid"];
     this.profileType = value["user"];
     sessionStorage.setItem("user", this.user);
-    console.log(sessionStorage.getItem("user"));
     this.patientService.getotpForLogin(value).subscribe(data => {
       let result = data;
-      console.log(result);
       if (result["status"] == false) {
         alert("User Not Registered or Please Select the correct profile type");
       }
@@ -49,7 +45,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitOtpValidate(value) {
-    console.log(value);
     if (value.otp == this.otp) {
       if (this.profileType == "Doctor") {
         this.router.navigate(['/doctorhome']);
@@ -57,7 +52,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("sessionId", Math.random().toString());
       }
       else if (this.profileType == "Patient") {
-        this.router.navigate(['/SessionList']);
+        this.router.navigate(['/dashboard']);
         sessionStorage.setItem("user", this.user);
         sessionStorage.setItem("sessionId", Math.random().toString());
       }

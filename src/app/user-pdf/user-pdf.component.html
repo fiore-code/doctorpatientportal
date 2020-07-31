@@ -24,9 +24,11 @@
         <div style="height: 100vh;background-color:#595959 ;" class="col-sm-2 sidenav hidden-xs">
             <img src="../../assets/logo.png" style="width: 150px;height: 150px;margin-left: 20px;">
             <ul class="nav nav-pills nav-stacked red">
+                <li><a [routerLink]="['/dashboard']" style="color: white;">Dashboard</a></li>
                 <li class="active"><a>My Profile</a></li>
                 <li><a [routerLink]="['/sessions']" style="color: white;">Reports</a></li>
                 <li><a [routerLink]="['/mlportal']" style="color: white;">Image Analysis</a></li>
+                <li><a [routerLink]="['/files']" style="color: white;">Files</a></li>
                 <li><a [routerLink]="['/nearby']" style="color: white;">Location</a></li>
                 <li (click)="logOff()" style="cursor: pointer;color: white;"><a
                         style="text-decoration: none;color: white;">Log Off</a></li>
@@ -137,9 +139,10 @@
         </div>
         <div class="col-sm-3">
             <div class="well">
-                <button class="btn btn-dark" style="width: 100%;background-color: #333;color: white;">
-                    Upload Files
-                </button>
+                <label class="btn btn-dark" style="background-color: #333;color: aliceblue;width: 100%;">
+                    Upload Files<input type="file"  style="display: none !important;"
+                    (change)="onFileUpload($event)">
+                </label>
             </div>
             <div class="well">
                 <ul class="nav nav-pills nav-stacked red">
