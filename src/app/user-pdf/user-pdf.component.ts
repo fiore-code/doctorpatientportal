@@ -36,7 +36,6 @@ export class UserPdfComponent implements OnInit {
       let userData = data;
       this.age = userData["Objects"]["0"]["age"];
       this.gender = userData["Objects"]["0"]["gender"];
-      this.gender = this.gender.toLowerCase();
       this.name = userData["Objects"]["0"]["name"];
       const inputAge = document.getElementById("inputAge") as HTMLInputElement;
       inputAge.readOnly = true;

@@ -56,7 +56,7 @@ export class MlportalComponent implements OnInit {
     };
     this.patientService.sendEmailToDoctor(doctorObj).subscribe(data => {
       if (data["status"] == false) {
-        alert("Server Error Occurred");
+        alert("Work In Progress");
         this.shareToDoctor = false;
         this.newDoctorList = [];
       }
